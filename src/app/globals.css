@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: #111827;
+  background: #E7EEF5;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
