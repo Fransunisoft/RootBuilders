@@ -22,7 +22,7 @@ import morgan from "morgan";
 
 import { requestLogger } from "./middlewares/requestLogger.js";
 import { rateLimiter } from "./middlewares/rateLimiter.js";
-import { auth } from "./middlewares/auth.js";
+import { protect } from "./middlewares/auth/protect.js";
 import { globalErrorHandler } from "./middlewares/errorHandler.js";
 
 import apiV1Routes from "./api/v1/routes.js";
@@ -60,10 +60,10 @@ app.get("/health", (req, res) => {
 });
 
 // API Routes
-app.use("/api/v1", apiV1Routes);
+app.use("/api/v1", protect, apiV1Routes);
 
 // 404 Handler
-app.all("*", (req, res, next) => {
+app.all(/.*/, (req, res, next) => {
   const err = new Error(`Route not found: ${req.originalUrl}`);
   err.statusCode = 404;
   err.status = "fail";
