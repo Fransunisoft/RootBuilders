@@ -3,10 +3,12 @@
  * Application entry point
  */
 
-import config from "./config/index.js";
-import app from "./app.js";
-import prisma from "./database/prisma.js";
-import { logInfo, logError, logWarn } from "./utils/logger.js";
+import config from "./src/config/index.js";
+import app from "./src/app.js";
+import prisma from "./src/database/prisma.js";
+import { logInfo, logError, logWarn } from "./src/utils/logger.js";
+
+import './src/jobs/cron.job.js';   
 
 /* ====================== Process Safety Nets ====================== */
 

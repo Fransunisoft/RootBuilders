@@ -1,26 +1,35 @@
-// database/index.js
-// Prisma Client configuration - Central database connection
+// database/prisma.js
+// Prisma Client Setup using PrismaPg Adapter
 
 import "dotenv/config";
 import { PrismaClient } from "@prisma/client";
+import { PrismaPg } from '@prisma/adapter-pg';
 
-// This helps prevent multiple Prisma instances during development (hot reload)
 const globalForPrisma = globalThis;
 
-// Check if DATABASE_URL is set in .env
-if (!process.env.DATABASE_URL) {
-  throw new Error("❌ DATABASE_URL is not defined in .env file");
+// Get database connection string from environment
+const connectionString = process.env.DATABASE_URL;
+
+if (!connectionString) {
+  throw new Error('DATABASE_URL is not defined in .env file');
 }
+
+// Create adapter (better performance for PostgreSQL databases like Supabase, Neon, etc.)
+const adapter = new PrismaPg({
+  connectionString,
+  ssl: { rejectUnauthorized: false }, // Good for hosted databases (Supabase, Neon, Railway, etc.)
+});
 
 // Initialize Prisma Client
 const prisma = globalForPrisma.prisma || new PrismaClient({
-  log: process.env.NODE_ENV === "development" 
-    ? ["query", "info", "warn", "error"]   // Show detailed logs in development
-    : ["error"],                           // Only show errors in production
+  adapter,
+  log: process.env.NODE_ENV === 'development'
+    ? ['query', 'error', 'warn']     // Show detailed logs in development
+    : ['error'],                     // Only show errors in production
 });
 
-// Store prisma instance globally in development to avoid multiple connections
-if (process.env.NODE_ENV !== "production") {
+// Prevent multiple Prisma instances in development (important when using nodemon)
+if (process.env.NODE_ENV !== 'production') {
   globalForPrisma.prisma = prisma;
 }
 
