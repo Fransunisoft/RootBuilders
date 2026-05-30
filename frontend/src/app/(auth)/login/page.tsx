@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function LoginPage() {
   return (
     <div>
@@ -18,16 +20,16 @@ export default function LoginPage() {
             id="phone"
             type="tel"
             placeholder="08012345678"
-            className="mt-2 w-full rounded-xl border border-gray-300 px-4 py-3 text-sm outline-none focus:border-[#5D8ABB] focus:ring-2 focus:ring-[#5D8ABB]/20"
+            className="mt-2 w-full rounded-xl border border-neutral-border px-4 py-3 text-sm outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-300/20"
           />
         </div>
 
-        <button
+        <Link href="/verify-otp" ><button
           type="submit"
-          className="w-full rounded-xl bg-[#0D519A] px-4 py-3 text-sm font-semibold text-white hover:bg-[#3D74AE]"
+          className="w-full rounded-xl bg-primary-500 px-4 py-3 text-sm font-semibold text-white hover:bg-primary-400"
         >
           Send OTP
-        </button>
+        </button></Link>
       </form>
     </div>
   );

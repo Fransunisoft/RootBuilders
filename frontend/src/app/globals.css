@@ -1,6 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap");
 @import "tailwindcss";
+@config "../../tailwind.config.ts";
 
-* {
+:root {
+  --primary-50: #e7eef5;
+  --primary-100: #b4c9e0;
+  --primary-200: #90afd1;
+  --primary-300: #5d8abb;
+  --primary-400: #3d74ae;
+  --primary-500: #0d519a;
+  --primary-600: #0c4a8c;
+  --primary-700: #093a6d;
+  --primary-800: #072d55;
+  --primary-900: #052241;
+
+  --secondary-50: #e9f6f5;
+  --secondary-100: #bae4e1;
+  --secondary-200: #98d7d3;
+  --secondary-300: #6ac5bf;
+  --secondary-400: #4db9b2;
+  --secondary-500: #20a89f;
+  --secondary-600: #1d9991;
+  --secondary-700: #177771;
+  --secondary-800: #125c57;
+  --secondary-900: #0d4743;
+
+  --accent-50: #fff0eb;
+  --accent-100: #ffd1c0;
+  --accent-200: #ffbba2;
+  --accent-300: #ff9c78;
+  --accent-400: #ff895d;
+  --accent-500: #ff6b35;
+  --accent-600: #e86130;
+  --accent-700: #b54c26;
+  --accent-800: #8c3b1d;
+  --accent-900: #6b2d16;
+
+  --error-bg: #f8e9e9;
+  --error-100: #eababb;
+  --error-200: #e0999a;
+  --error-300: #d16a6c;
+  --error-400: #c94d50;
+  --error-500: #bb2124;
+  --error-600: #aa1e21;
+  --error-700: #85171a;
+  --error-800: #671214;
+  --error-900: #4f0e0f;
+
+  --success-bg: #e9f8eb;
+  --success-100: #baeac0;
+  --success-200: #99e0a1;
+  --success-300: #6bd176;
+  --success-400: #4ec95c;
+  --success-500: #22bb33;
+  --success-600: #1faa2e;
+  --success-700: #188524;
+  --success-800: #13671c;
+  --success-900: #0e4f15;
+
+  --warning-bg: #fef7ed;
+  --warning-100: #fae6c8;
+  --warning-200: #f8d9ae;
+  --warning-300: #f5c888;
+  --warning-400: #f3bd71;
+  --warning-500: #f0ad4e;
+  --warning-600: #da9d47;
+  --warning-700: #aa7b37;
+  --warning-800: #845f2b;
+  --warning-900: #654921;
+
+  --info-bg: #eff9fc;
+  --info-100: #ccebf5;
+  --info-200: #b4e2f0;
+  --info-300: #91d5e9;
+  --info-400: #7ccde5;
+  --info-500: #5bc0de;
+  --info-600: #53afca;
+  --info-700: #41889e;
+  --info-800: #326a7a;
+  --info-900: #26515d;
+
+  --neutral-light: #ffffff;
+  --neutral-border: #dbdbdc;
+  --neutral-card-border: #e7e7e8;
+  --neutral-muted-text: #9ea6af;
+  --neutral-secondary-text: #7c8084;
+  --neutral-primary-text: #333333;
+
+  --background: #ffffff;
+}
+
+*,
+*::after,
+*::before {
   box-sizing: border-box;
 }
 
@@ -10,13 +102,114 @@ html {
 
 body {
   margin: 0;
-  color: #111827;
-  background: #E7EEF5;
+  background: var(--background);
+  color: var(--neutral-primary-text);
+  font-family: "Roboto", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 400;
 }
+
 
 button,
 input,
 textarea,
 select {
   font: inherit;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out;
+}
+
+
+
+/* RB DESKTOP TYPROGRAPHY SYSTEM */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Ubuntu Sans", ui-sans-serif, system-ui, sans-serif;
+    line-height: 1.2;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 600;
+}
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+h3 {
+  font-size: 20px;
+  font-weight: 500;
+}
+h4 {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+p,li,span {
+  font-family: "Roboto", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+    line-height: 1.6;
+}
+
+.caption{
+  font-size: 14px;
+}
+
+/* RB Mobile Typography style */
+@media (max-width: 480px) {
+  h1 {
+  font-size: 24px;
+  font-weight: 600;
+}
+h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+h3 {
+  font-size: 18px;
+  font-weight: 500;
+}
+h4 {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+p,li,span {
+  font-family: "Roboto", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+    line-height: 1.6;
+}
+
+.caption{
+  font-size: 12px;
+}
 }

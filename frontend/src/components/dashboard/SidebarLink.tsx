@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { SidebarItem } from "@/types/navigation";
+import NavigationIcon from "./NavigationIcon";
 
 type SidebarLinkProps = {
   item: SidebarItem;
@@ -20,11 +21,11 @@ export default function SidebarLink({ item }: SidebarLinkProps) {
       className={[
         "flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition",
         isActive
-          ? "bg-[#6DAF45] text-white"
-          : "text-gray-600 hover:bg-[#F0F8EA] hover:text-[#2F5D1E]",
+          ? "bg-primary-500 text-white"
+          : "text-neutral-secondary hover:bg-primary-50 hover:text-primary-500",
       ].join(" ")}
     >
-      <span className="text-base">{item.icon}</span>
+      <NavigationIcon name={item.icon} />
       <span>{item.label}</span>
     </Link>
   );

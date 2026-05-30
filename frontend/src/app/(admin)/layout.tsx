@@ -7,10 +7,8 @@ export default function AdminLayout({
 }) {
   return (
     <DashboardShell
-      role="admin"
-      sidebarTitle="Admin Workspace"
-      headerTitle="Admin Dashboard"
-      headerDescription="Manage cohort operations, participants, teams, tasks, and engagement activity."
+      workspaceId="super-admin"
+      subject={{ role: "super admin" }}
     >
       {children}
     </DashboardShell>

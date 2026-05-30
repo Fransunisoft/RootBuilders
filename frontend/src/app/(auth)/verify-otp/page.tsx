@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function VerifyOtpPage() {
   return (
     <div>
@@ -19,16 +21,16 @@ export default function VerifyOtpPage() {
             type="text"
             placeholder="123456"
             maxLength={6}
-            className="mt-2 w-full rounded-xl border border-gray-300 px-4 py-3 text-sm tracking-widest outline-none focus:border-[#6DAF45] focus:ring-2 focus:ring-[#6DAF45]/20"
+            className="mt-2 w-full rounded-xl border border-neutral-border px-4 py-3 text-sm tracking-widest outline-none focus:border-secondary-500 focus:ring-2 focus:ring-secondary-500/20"
           />
         </div>
 
-        <button
+        <Link href="/participant"><button
           type="submit"
-          className="w-full rounded-xl bg-[#6DAF45] px-4 py-3 text-sm font-semibold text-white hover:bg-[#5E9D3A]"
+          className="w-full rounded-xl bg-secondary-500 px-4 py-3 text-sm font-semibold text-white hover:bg-secondary-600"
         >
           Verify & Continue
-        </button>
+        </button></Link>
       </form>
     </div>
   );
