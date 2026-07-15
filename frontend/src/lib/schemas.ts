@@ -7,10 +7,10 @@ export const registerSchema = z.object({
 
     firstName: z.string().min(2, "First name is required"),
     lastName: z.string().min(2, "Last name is required"),
-    phone: z.string().min(10, "Enter valid phone number"),
+    phone: z.string().trim().regex(/^\+?[1-9]\d{7,14}$/,"Enter a valid phone number"),
     country: z.string().min(2, "Select a country"),
 
-    birthDate: z.string().min(2, "Required"),
+    birthDate:  z.string().min(1, "Birth date is required"),
     gender: z.string().min(2, "Required"),
     education: z.string().min(2, "Required"),
     employment: z.string().min(2, "Required"),

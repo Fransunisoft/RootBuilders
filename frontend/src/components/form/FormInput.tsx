@@ -24,7 +24,7 @@ export default function FormInput ({name, label, placeholder, type} : Props) {
                 {...register(name)}
                 type={inputType}
                 placeholder={placeholder}
-                className={`relative w-full rounded-lg px-4 py-3 caption outline-none transition 
+                className={`relative w-full rounded-lg px-4 py-3 caption outline-none transition text-neutral-secondary
                     ${error ? "border border-error-500 focus:error-500" : "border border-neutral-border focus:border-primary-500" }`}
             />
             {type === "password" && (
@@ -38,7 +38,7 @@ export default function FormInput ({name, label, placeholder, type} : Props) {
             )}
         </div>
         {error?.message && (
-            <p className='text-sm text-error-500'>{error.message}</p>
+            <p className='text-[14px]! text-error-500'>{error.message}</p>
         )}
     </div>
   )
