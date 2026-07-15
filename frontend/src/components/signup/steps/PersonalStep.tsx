@@ -3,6 +3,7 @@ import React from 'react'
 import FormInput from '@/components/form/FormInput';
 import { Button } from '@/components/ui/Button';
 import { ButtonSecondary } from '@/components/ui/ButtonSecondary';
+import { FormSelect } from '@/components/form/FormSelect';
 
 
 const PersonalStep = ({next, back} : {next:() => void, back:() => void}) => {
@@ -17,11 +18,28 @@ const PersonalStep = ({next, back} : {next:() => void, back:() => void}) => {
             </div>
         </div>
         <FormInput name='phone' label='phone number' placeholder='081000000'/>
-        <FormInput name='country' label='country of origin' placeholder='Nigeria'/>
+        <FormSelect
+                name="country"
+                label="country of origin"
+                options={[
+                {
+                    label: "Nigeria",
+                    value: "nigeria",
+                },
+                 {
+                    label: "Ethiopia",
+                    value: "ethiopia",
+                },
+                {
+                    label: "Rwanda",
+                    value: "rwanda",
+                },                
+                ]}
+            />
         
         <div className='flex w-full gap-4'>
             <ButtonSecondary type='button' onclick={back} />  
-            <Button onclick={next} />
+            <Button onclick={next} text='continue'/>
         </div>
     </div>
   )

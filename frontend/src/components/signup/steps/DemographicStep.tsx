@@ -6,7 +6,7 @@ import { ButtonSecondary } from '@/components/ui/ButtonSecondary'
 import { FormSelect } from '@/components/form/FormSelect'
 
 const DemographicStep = ({next,back} : {next:() => void,  back:() => void}) => {
-    
+  
   return (
     <div className='space-y-5'>
         <FormInput name='birthDate' label='date of birth' type='date'/>
@@ -51,7 +51,7 @@ const DemographicStep = ({next,back} : {next:() => void,  back:() => void}) => {
           options={[
             {
               label: "Employed",
-              value: "Employed",
+              value: "employed",
             },
             {
               label: "Self Employed",
@@ -66,7 +66,7 @@ const DemographicStep = ({next,back} : {next:() => void,  back:() => void}) => {
         />
         <div className='flex w-full gap-4'>
             <ButtonSecondary type='button' onclick={back} />  
-            <Button onclick={next} />
+            <Button onclick={next} text='Continue'/>
         </div>
     </div>
   )

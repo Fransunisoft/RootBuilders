@@ -6,7 +6,12 @@ import { Button } from '@/components/ui/Button'
 import { ButtonSecondary } from '@/components/ui/ButtonSecondary'
 import { FormSelect } from '@/components/form/FormSelect'
 
-const ExperienceStep = ({back} : {back:() => void}) => {
+type Props = {
+  back: () => void,
+  loading: boolean,
+}
+
+const ExperienceStep = ({loading, back} : Props) => {
   return (
     <div className="space-y-5">  
       <FormSelect
@@ -48,7 +53,7 @@ const ExperienceStep = ({back} : {back:() => void}) => {
         label='skill level'
         options={[
           {
-            label: 'Ixperienced',
+            label: 'Experienced',
             value: 'experienced'
           },
           {
@@ -79,7 +84,7 @@ const ExperienceStep = ({back} : {back:() => void}) => {
         ]}/>
         <div className='flex w-full gap-4'>
             <ButtonSecondary type='button' onclick={back} />  
-            <Button type='submit' />
+            <Button type='submit' disabled={loading} text='Continue'/>
         </div>
     </div>
   )

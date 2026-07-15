@@ -1,5 +1,6 @@
 "use client"
 import React from 'react'
+import { useRouter } from 'next/navigation'
 import {FormProvider, useForm} from "react-hook-form"
 import { useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -10,10 +11,14 @@ import DemographicStep from './steps/DemographicStep'
 import ExperienceStep from './steps/ExperienceStep'
 
 import { registerSchema, type RegisterFormdata } from '@/lib/schemas'
+import { registerUser } from '@/lib/api'
 
 
 export const MultiStepForm = () => {
   const [step, setStep] = useState(1);
+  const [loading, setLoading] = useState(false)
+  const router = useRouter()
+
   const methods = useForm<RegisterFormdata>({
     resolver: zodResolver(registerSchema),
     mode: "onTouched",
@@ -88,8 +93,15 @@ export const MultiStepForm = () => {
     }
   
 
-  const submit = (data:RegisterFormdata) => {
-    console.log(data)
+  const submit = async (data:RegisterFormdata) => {
+    try{
+      setLoading(true)
+      const response = await registerUser(data)
+      console.log(response)
+      router.push("/register-success")
+    } finally {
+      setLoading(false)
+    }
   }
   
   return (
@@ -99,7 +111,7 @@ export const MultiStepForm = () => {
             {step===1 && <AccountStep next = {next}/>}
             {step===2 && <PersonalStep next = {next} back = {back}/>}
             {step===3 && <DemographicStep next = {next} back = {back}/>}
-            {step===4 && <ExperienceStep  back = {back}/>}
+            {step===4 && <ExperienceStep  back = {back} loading={loading}/>}
         
           </form>
             

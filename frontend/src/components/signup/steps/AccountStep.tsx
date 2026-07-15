@@ -13,7 +13,7 @@ const AccountStep = ({next} : {next:() => Promise<void>}) => {
         <FormInput name="password" label="Password" placeholder ="123456" type='password'/>        
         <FormInput name="confirmPassword" label="confirm password" placeholder ="123456" type='password'/>        
         
-        <Button onclick={next} />
+        <Button onclick={next} text='continue' />
        
         
     </div>
